@@ -182,14 +182,13 @@
 
       passwordInput.addEventListener("input", function () {
         const password = passwordInput.value;
-
-        // Reset strength indicator parts
+ 
         part1.className = "strength-part";
         part2.className = "strength-part";
         part3.className = "strength-part";
 
         if (password.length > 0) {
-          part1.classList.add("strength-weak"); // Show red immediately
+          part1.classList.add("strength-weak");  
         }
 
         if (password.length >= 8 && /\d/.test(password)) {
@@ -208,35 +207,31 @@
           part2.classList.add("strength-strong");
           part3.classList.add("strength-strong");
         }
-
-        // Clear error message if any
+ 
         errorMessage.textContent = "";
       });
 
       confirmPasswordInput.addEventListener("input", function () {
-        errorMessage.textContent = ""; // Clear error message
+        errorMessage.textContent = ""; 
       });
 
       signupForm.addEventListener("submit", function (e) {
-        e.preventDefault(); // Prevent default form submission
+        e.preventDefault();  
 
         const password = passwordInput.value;
         const confirmPassword = confirmPasswordInput.value;
-
-        // Validate password length
+ 
         if (password.length < 8) {
           errorMessage.textContent =
             "Password must be at least 8 characters long.";
           return;
         }
-
-        // Validate password match
+ 
         if (password !== confirmPassword) {
           errorMessage.textContent = "Passwords do not match.";
           return;
         }
-
-        // Redirect if all validations pass
+ 
         window.location.href = "create.html";
       });
     </script>
