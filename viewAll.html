@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Send-IT | View All Parcels</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 20px;
+      }
+      .parcel {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px auto;
+        max-width: 400px;
+        text-align: left;
+      }
+      button {
+        padding: 10px 20px;
+        margin-top: 10px;
+        background-color: #0073e6;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        opacity: 0.9;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>All Parcel Orders</h1>
+    <div id="parcelsContainer"></div>
+
+    <script>
+      // Load parcels from local storage and display them
+      function loadParcels() {
+        const parcels = JSON.parse(localStorage.getItem("parcels")) || [];
+
+        const parcelsContainer = document.getElementById("parcelsContainer");
+        parcelsContainer.innerHTML = "";
+
+        if (parcels.length === 0) {
+          parcelsContainer.innerHTML = "<p>No parcels created yet.</p>";
+          return;
+        }
+
+        parcels.forEach((parcel, index) => {
+          const parcelDiv = document.createElement("div");
+          parcelDiv.className = "parcel";
+
+          parcelDiv.innerHTML = `
+            <p><strong>Recipient:</strong> ${parcel.recipientName}</p>
+            <p><strong>Pickup:</strong> ${parcel.pickupAddress}</p>
+            <p><strong>Destination:</strong> ${parcel.destinationAddress}</p>
+            <p><strong>Weight:</strong> ${parcel.weight} kg</p>
+            <button onclick="viewOrder(${index})">View Details</button>
+          `;
+
+          parcelsContainer.appendChild(parcelDiv);
+        });
+      }
+
+      // Call loadParcels when the page loads
+      loadParcels();
+
+      // Function to view order details
+      function viewOrder(index) {
+        const parcels = JSON.parse(localStorage.getItem("parcels")) || [];
+        const selectedParcel = parcels[index];
+
+        // Save the selected parcel to sessionStorage
+        sessionStorage.setItem(
+          "selectedParcel",
+          JSON.stringify(selectedParcel)
+        );
+
+        // Redirect to order details page
+        window.location.href = "order-details.html";
+      }
+    </script>
+  </body>
+</html>

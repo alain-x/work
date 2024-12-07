@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Send-IT | Order Details</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 20px;
+      }
+      button {
+        margin: 10px;
+        padding: 10px 20px;
+        background-color: #0073e6;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        opacity: 0.9;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Order Details</h1>
+
+    <div id="orderDetails"></div>
+
+    <button onclick="changeDestination()">Change Destination</button>
+    <button onclick="cancelOrder()">Cancel Order</button>
+    <button id="logout" onclick="logout()">Log Out</button>
+
+    <script>
+      // Fetch the selected parcel from sessionStorage
+      const selectedParcel = JSON.parse(sessionStorage.getItem("selectedParcel"));
+
+      if (selectedParcel) {
+        // Display the parcel details
+        document.getElementById("orderDetails").innerHTML = `
+          <p><strong>Recipient:</strong> ${selectedParcel.recipientName}</p>
+          <p><strong>Pickup:</strong> ${selectedParcel.pickupAddress}</p>
+          <p><strong>Destination:</strong> ${selectedParcel.destinationAddress}</p>
+          <p><strong>Weight:</strong> ${selectedParcel.weight} kg</p>
+        `;
+      } else {
+        alert("No parcel details found.");
+        window.location.href = "viewAll.html";
+      }
+
+      // Change destination function
+      function changeDestination() {
+        window.location.href = "change-destination.html";
+      }
+
+      // Cancel order function
+      function cancelOrder() {
+        alert("Order Canceled!");
+        window.location.href = "viewAll.html";
+      }
+
+      // Logout function
+      function logout() {
+        sessionStorage.clear();
+        alert("You have been logged out!");
+        window.location.href = "login.html";
+      }
+    </script>
+  </body>
+</html>

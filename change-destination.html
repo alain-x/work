@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Send-IT | Change Destination</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 20px;
+      }
+      input,
+      button {
+        display: block;
+        margin: 10px auto;
+        padding: 10px;
+        width: 90%;
+      }
+      button {
+        color: white;
+        background-color: #0073e6;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Change Destination</h1>
+    <input type="text" placeholder="New Destination Address" required />
+    <button onclick="saveDestination()">Save Changes</button>
+    <script>
+      function saveDestination() {
+        alert("Destination Updated!");
+        window.location.href = "viewAll.html";
+      }
+    </script>
+  </body>
+</html>
