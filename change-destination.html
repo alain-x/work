@@ -7,29 +7,63 @@
     <style>
       body {
         font-family: Arial, sans-serif;
-        text-align: center;
         padding: 20px;
+        margin: 0;
+        background-color: #f4f4f4;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
       }
-      input,
-      button {
-        display: block;
-        margin: 10px auto;
-        padding: 10px;
-        width: 90%;
+      h1 {
+        color: #0073e6;
+        margin-bottom: 20px;
       }
-      button {
+      .form-container {
+        width: 100%;
+        max-width: 400px;
+        background: white;
+        padding: 20px;
         border-radius: 10px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+        text-align: center;
+      }
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+      button {
+        display: inline-block;
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        background: linear-gradient(
+          to right,
+          rgb(136, 80, 129),
+          rgb(42, 3, 84)
+        );
         color: white;
-        background-color: #0073e6;
+        font-size: 16px;
         border: none;
         cursor: pointer;
+      }
+      button:hover {
+        background-color: #005bb5;
       }
     </style>
   </head>
   <body>
-    <h1>Change Destination</h1>
-    <input type="text" placeholder="New Destination Address" required />
-    <button onclick="saveDestination()">Save Changes</button>
+    <div class="form-container">
+      <h1>Change Destination</h1>
+      <input type="text" placeholder="New Destination Address" required />
+      <button onclick="saveDestination()">Save Changes</button>
+    </div>
+
     <script>
       function saveDestination() {
         alert("Destination Updated!");

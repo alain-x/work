@@ -9,27 +9,68 @@
         font-family: Arial, sans-serif;
         text-align: center;
         padding: 20px;
+        margin: 0;
+        background-color: #f4f4f4;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+      h1 {
+        color: #0073e6;
+        margin-bottom: 20px;
+      }
+      #orderDetails {
+        width: 100%;
+        max-width: 400px;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        text-align: left;
+        margin-bottom: 20px;
+      }
+      #orderDetails p {
+        margin: 10px 0;
+      }
+      .card-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
       }
       button {
-        margin: 10px;
-        padding: 10px 20px;
-        background-color: #0073e6;
+        padding: 10px 15px;
+        background: linear-gradient(
+          to right,
+          rgb(136, 80, 129),
+          rgb(42, 3, 84)
+        );
         color: white;
         border: none;
+        border-radius: 10px;
+        font-size: 14px;
         cursor: pointer;
+        width: 48%;
       }
       button:hover {
-        opacity: 0.9;
+        background-color: #005bb5;
       }
     </style>
   </head>
   <body>
     <h1>Order Details</h1>
 
-    <div id="orderDetails"></div>
+    <div id="orderDetails">
+      <div id="parcelInfo">
+        <!-- Parcel details will be injected here -->
+      </div>
+      <div class="card-buttons">
+        <button onclick="changeDestination()">Change Destination</button>
+        <button onclick="cancelOrder()">Cancel Order</button>
+      </div>
+    </div>
 
-    <button onclick="changeDestination()">Change Destination</button>
-    <button onclick="cancelOrder()">Cancel Order</button>
     <button id="logout" onclick="logout()">Log Out</button>
 
     <script>
@@ -38,7 +79,7 @@
       );
 
       if (selectedParcel) {
-        document.getElementById("orderDetails").innerHTML = `
+        document.getElementById("parcelInfo").innerHTML = `
           <p><strong>Recipient:</strong> ${selectedParcel.recipientName}</p>
           <p><strong>Pickup:</strong> ${selectedParcel.pickupAddress}</p>
           <p><strong>Destination:</strong> ${selectedParcel.destinationAddress}</p>
