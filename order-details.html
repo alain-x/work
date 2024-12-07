@@ -33,11 +33,11 @@
     <button id="logout" onclick="logout()">Log Out</button>
 
     <script>
-      // Fetch the selected parcel from sessionStorage
-      const selectedParcel = JSON.parse(sessionStorage.getItem("selectedParcel"));
+      const selectedParcel = JSON.parse(
+        sessionStorage.getItem("selectedParcel")
+      );
 
       if (selectedParcel) {
-        // Display the parcel details
         document.getElementById("orderDetails").innerHTML = `
           <p><strong>Recipient:</strong> ${selectedParcel.recipientName}</p>
           <p><strong>Pickup:</strong> ${selectedParcel.pickupAddress}</p>
@@ -49,18 +49,15 @@
         window.location.href = "viewAll.html";
       }
 
-      // Change destination function
       function changeDestination() {
         window.location.href = "change-destination.html";
       }
 
-      // Cancel order function
       function cancelOrder() {
         alert("Order Canceled!");
         window.location.href = "viewAll.html";
       }
 
-      // Logout function
       function logout() {
         sessionStorage.clear();
         alert("You have been logged out!");

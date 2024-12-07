@@ -3,39 +3,75 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Send-IT | View All Parcels</title>
+    <title>View All Parcels</title>
     <style>
       body {
         font-family: Arial, sans-serif;
         text-align: center;
         padding: 20px;
+        background-color: #f4f4f4;
+      }
+      h1 {
+        color: #0073e6;
+        margin-bottom: 20px;
+      }
+      .parcels-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 60px;
+        justify-items: center;
+        padding: 0 20px;
       }
       .parcel {
         border: 1px solid #ccc;
-        padding: 10px;
-        margin: 10px auto;
-        max-width: 400px;
+        padding: 15px;
         text-align: left;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+      }
+      .parcel p {
+        margin: 8px 0;
       }
       button {
         padding: 10px 20px;
         margin-top: 10px;
-        background-color: #0073e6;
+        background: linear-gradient(
+          to right,
+          rgb(136, 80, 129),
+          rgb(42, 3, 84)
+        );
         color: white;
         border: none;
         cursor: pointer;
+        border-radius: 10px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
       }
+
       button:hover {
-        opacity: 0.9;
+        background-color: #005bb5;
+      }
+      @media (max-width: 600px) {
+        .parcels-container {
+          grid-template-columns: 1fr;
+          padding: 0 10px;
+        }
+        .parcel {
+          max-width: 100%;
+        }
       }
     </style>
   </head>
   <body>
     <h1>All Parcel Orders</h1>
-    <div id="parcelsContainer"></div>
+    <div class="parcels-container" id="parcelsContainer"></div>
 
     <script>
-      // Load parcels from local storage and display them
       function loadParcels() {
         const parcels = JSON.parse(localStorage.getItem("parcels")) || [];
 
@@ -63,21 +99,17 @@
         });
       }
 
-      // Call loadParcels when the page loads
       loadParcels();
 
-      // Function to view order details
       function viewOrder(index) {
         const parcels = JSON.parse(localStorage.getItem("parcels")) || [];
         const selectedParcel = parcels[index];
 
-        // Save the selected parcel to sessionStorage
         sessionStorage.setItem(
           "selectedParcel",
           JSON.stringify(selectedParcel)
         );
 
-        // Redirect to order details page
         window.location.href = "order-details.html";
       }
     </script>

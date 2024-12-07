@@ -3,29 +3,55 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Send-IT | Sign Up</title>
+    <title>Sign Up</title>
     <style>
       body {
         font-family: Arial, sans-serif;
-        text-align: center;
         padding: 20px;
+        margin: 0;
+        background-color: #f9f9f9;
+      }
+      h1 {
+        color: #10253a;
+        margin-top: 50px;
+        text-align: center;
       }
       .form {
+        height: auto;
         max-width: 400px;
-        margin: auto;
-        text-align: left;
+        margin: 20px auto;
+        padding: 20px;
+        background: linear-gradient(
+          to right,
+          rgb(136, 80, 129),
+          rgb(42, 3, 84)
+        );
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        color: white;
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
       }
       label {
-        display: block;
-        margin-bottom: 5px;
         font-weight: bold;
+        font-size: 14px;
+        margin-bottom: 5px;
       }
       input {
         display: block;
-        margin-bottom: 15px;
-        padding: 10px;
         width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
         box-sizing: border-box;
+      }
+      input[type="password"] {
+        background-color: #fff;
+        color: #333;
       }
       button {
         padding: 10px 20px;
@@ -34,17 +60,20 @@
         border: none;
         cursor: pointer;
         width: 100%;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+      button:hover {
+        background-color: #005bb5;
       }
       .strength-indicator {
         display: flex;
         justify-content: space-between;
         margin-bottom: 15px;
-        width: 100%;
-        height: 10px;
       }
       .strength-part {
         flex: 1;
-        height: 100%;
+        height: 10px;
         margin: 0 2px;
         background-color: #ccc;
         border-radius: 5px;
@@ -67,48 +96,76 @@
     </style>
   </head>
   <body>
-    <h1>Create an Account</h1>
     <form class="form" id="signupForm">
-      <label for="fullName">Full Name</label>
-      <input
-        id="fullName"
-        type="text"
-        placeholder="Enter your full name"
-        required
-        aria-label="Full Name"
-      />
-
-      <label for="email">Email</label>
-      <input
-        id="email"
-        type="email"
-        placeholder="Enter your email"
-        required
-        aria-label="Email"
-      />
-
-      <label for="password">Password</label>
-      <input
-        id="password"
-        type="password"
-        placeholder="Password (min 8 characters)"
-        required
-        aria-label="Password"
-      />
-      <div class="strength-indicator">
-        <div id="part1" class="strength-part"></div>
-        <div id="part2" class="strength-part"></div>
-        <div id="part3" class="strength-part"></div>
+      <h1>Create an Account</h1>
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input
+          id="fullName"
+          type="text"
+          placeholder="Enter your full name"
+          required
+          aria-label="Full Name"
+        />
       </div>
 
-      <label for="confirmPassword">Confirm Password</label>
-      <input
-        id="confirmPassword"
-        type="password"
-        placeholder="Confirm your password"
-        required
-        aria-label="Confirm Password"
-      />
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          placeholder="Enter your email"
+          required
+          aria-label="Email"
+        />
+      </div>
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input
+          id="location"
+          type="location"
+          placeholder="Enter your Location /City/province"
+          required
+          aria-label="Email"
+        />
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input
+          id="address"
+          type="address"
+          placeholder="Enter your Address"
+          required
+          aria-label="Address"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          placeholder="Password (min 8 characters)"
+          required
+          aria-label="Password"
+        />
+        <div class="strength-indicator">
+          <div id="part1" class="strength-part"></div>
+          <div id="part2" class="strength-part"></div>
+          <div id="part3" class="strength-part"></div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+          id="confirmPassword"
+          type="password"
+          placeholder="Confirm your password"
+          required
+          aria-label="Confirm Password"
+        />
+      </div>
       <span id="errorMessage" class="error-message"></span>
 
       <button type="submit">Sign Up</button>
@@ -136,8 +193,8 @@
         }
 
         if (password.length >= 8 && /\d/.test(password)) {
-          part1.classList.add("strength-medium"); // Update first part to yellow
-          part2.classList.add("strength-medium"); // Second part is yellow for medium
+          part1.classList.add("strength-medium");
+          part2.classList.add("strength-medium");
         }
 
         if (
@@ -147,7 +204,7 @@
           /\d/.test(password) &&
           /[!@#$%^&*]/.test(password)
         ) {
-          part1.classList.add("strength-strong"); // All parts green for strong
+          part1.classList.add("strength-strong");
           part2.classList.add("strength-strong");
           part3.classList.add("strength-strong");
         }

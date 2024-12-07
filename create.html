@@ -69,21 +69,17 @@
         ) {
           alert("Please fill out all fields!");
           return;
-        }
-
-        // Create parcel object
+        } 
         const parcel = {
           recipientName,
           pickupAddress,
           destinationAddress,
           weight,
         };
-
-        // Get existing parcels from local storage or initialize empty array
+ 
         const parcels = JSON.parse(localStorage.getItem("parcels")) || [];
         parcels.push(parcel);
-
-        // Save updated parcels array to local storage
+ 
         localStorage.setItem("parcels", JSON.stringify(parcels));
 
         alert("Parcel Created Successfully!");

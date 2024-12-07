@@ -3,28 +3,241 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Send-IT | Home</title>
+    <title>Send-IT</title>
     <style>
       body {
         font-family: Arial, sans-serif;
-        text-align: center;
-        padding: 20px;
+        margin: 0;
+        padding: 0;
       }
-      a {
+
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+      }
+
+      .navbar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 1rem;
+      }
+
+      .navbar-menu a {
+        color: #333;
+        text-decoration: none;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        transition: color 0.3s, border-bottom 0.3s;
+      }
+
+      .navbar-menu a:hover {
+        color: #0073e6;
+        border-bottom: 2px solid #0073e6;
+      }
+
+      .navbar-actions a {
         display: inline-block;
-        margin: 10px;
-        padding: 10px 20px;
+        padding: 0.5rem 1rem;
         text-decoration: none;
         color: white;
-        background-color: #0073e6;
+        background: linear-gradient(
+          to right,
+          rgb(136, 80, 129),
+          rgb(42, 3, 84)
+        );
         border-radius: 5px;
+        transition: background-color 0.3s, transform 0.3s;
+      }
+
+      .navbar-actions a:hover {
+        background-color: #005bb5;
+        transform: scale(1.05);
+      }
+
+      .team-section {
+        padding: 2rem 1rem;
+        text-align: center;
+        background-color: #f1f1f1;
+      }
+
+      .team-section table {
+        box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.1);
+        margin: 0 auto;
+        border-collapse: collapse;
+        width: 60%;
+        text-align: left;
+      }
+
+      .team-section th,
+      .team-section td {
+        justify-content: center;
+        text-align: center;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+      }
+
+      .team-section th {
+        background: linear-gradient(
+          to right,
+          rgb(136, 80, 129),
+          rgb(42, 3, 84)
+        );
+        color: white;
+      }
+
+      .services-section {
+        background-color: #f9f9f9;
+        padding: 2rem 1rem;
+        text-align: center;
+      }
+
+      .services-section h2 {
+        color: #0073e6;
+      }
+
+      .services-section .card {
+        width: 300px;
+        padding: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .why-choose-us {
+        padding: 2rem 1rem;
+        text-align: center;
+        background-color: #0073e6;
+        color: white;
+      }
+
+      .why-choose-us .card {
+        width: 300px;
+        padding: 1rem;
+        border: 1px solid #005bb5;
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.1);
       }
     </style>
   </head>
   <body>
-    <h1>Welcome to Send-IT</h1>
-    <p>Your reliable courier service</p>
-    <a href="login.html">Login</a>
-    <a href="signup.html">Sign Up</a>
+    <!-- Transparent Navbar -->
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-logo">
+          <h3 style="font-weight: bold; color: green; font-size: 25px">
+            Group 13
+          </h3>
+        </div>
+        <div class="navbar-menu">
+          <a href="./index.html">Home</a>
+          <a href="#ourservice">Services</a>
+        </div>
+        <div class="navbar-actions">
+          <a href="login.html">Login</a>
+          <a href="signup.html">Sign Up</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div style="padding-top: 80px; text-align: center">
+      <h1>Welcome to Send-IT</h1>
+      <p>Your reliable courier service</p>
+    </div>
+
+    <!-- Student Registration Numbers and Names -->
+    <section class="team-section">
+      <h2>Our Group 13 Members</h2>
+      <p>The contributors to this Group Work</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Student Name</th>
+            <th>Registration Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td>20588/2022</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>20593/2022</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>18445/2021</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>20554/2022</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Services Section -->
+    <section id="ourservice" class="services-section">
+      <h2>Our Services</h2>
+      <p>We offer a wide range of courier solutions to meet your needs.</p>
+      <div
+        style="
+          display: flex;
+          justify-content: center;
+          gap: 1.5rem;
+          flex-wrap: wrap;
+        "
+      >
+        <div class="card">
+          <h3>Express Delivery</h3>
+          <p>Fast and reliable delivery for urgent packages.</p>
+        </div>
+        <div class="card">
+          <h3>Same-Day Shipping</h3>
+          <p>Get your parcel delivered within the same day.</p>
+        </div>
+        <div class="card">
+          <h3>International Shipping</h3>
+          <p>Seamless delivery across borders and overseas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us">
+      <h2>Why Choose Send-IT?</h2>
+      <p>Reliable, secure, and fast courier services tailored to your needs.</p>
+      <div
+        style="
+          display: flex;
+          justify-content: center;
+          gap: 1.5rem;
+          flex-wrap: wrap;
+        "
+      >
+        <div class="card">
+          <h3>Secure Delivery</h3>
+          <p>Your packages are handled with care and delivered safely.</p>
+        </div>
+        <div class="card">
+          <h3>Real-Time Tracking</h3>
+          <p>Stay updated with live tracking of your parcels.</p>
+        </div>
+        <div class="card">
+          <h3>24/7 Support</h3>
+          <p>Our team is always here to assist you at any time.</p>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
