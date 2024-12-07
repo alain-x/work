@@ -3,29 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Send-IT | Create Parcel</title>
+    <title>Create Parcel</title>
     <style>
       body {
         font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: #f4f4f4;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
         text-align: center;
         padding: 20px;
       }
+      h1 {
+        color: #0073e6;
+        margin-bottom: 20px;
+      }
       .form {
+        width: 100%;
         max-width: 400px;
-        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
       }
-      input,
-      button {
-        display: block;
-        margin: 10px auto;
-        padding: 10px;
+      input {
         width: 90%;
+        padding: 10px;
+        margin: 10px auto;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
       }
       button {
+        width: 90%;
+        padding: 10px;
+        background: linear-gradient(
+          to right,
+          rgb(136, 80, 129),
+          rgb(42, 3, 84)
+        );
         color: white;
-        background-color: #0073e6;
         border: none;
+        border-radius: 5px;
         cursor: pointer;
+        font-size: 16px;
+      }
+      button:hover {
+        background-color: #005bb5;
       }
     </style>
   </head>
@@ -55,11 +82,16 @@
     </div>
     <script>
       function createParcel() {
-        const recipientName = document.getElementById("recipientName").value;
-        const pickupAddress = document.getElementById("pickupAddress").value;
-        const destinationAddress =
-          document.getElementById("destinationAddress").value;
-        const weight = document.getElementById("weight").value;
+        const recipientName = document
+          .getElementById("recipientName")
+          .value.trim();
+        const pickupAddress = document
+          .getElementById("pickupAddress")
+          .value.trim();
+        const destinationAddress = document
+          .getElementById("destinationAddress")
+          .value.trim();
+        const weight = document.getElementById("weight").value.trim();
 
         if (
           !recipientName ||
@@ -69,22 +101,21 @@
         ) {
           alert("Please fill out all fields!");
           return;
-        } 
+        }
+
         const parcel = {
           recipientName,
           pickupAddress,
           destinationAddress,
-          weight,
+          weight: parseFloat(weight),
         };
- 
+
         const parcels = JSON.parse(localStorage.getItem("parcels")) || [];
         parcels.push(parcel);
- 
+
         localStorage.setItem("parcels", JSON.stringify(parcels));
 
         alert("Parcel Created Successfully!");
-
-        // Redirect to view all parcels page
         window.location.href = "viewAll.html";
       }
     </script>
